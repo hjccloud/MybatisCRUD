@@ -15,4 +15,23 @@ public interface UserDao {
      * @return
      */
     List<User> findAll();
+
+    /**
+     * 根据id删除用户
+     */
+    void deleteUser(int id);
+
+    /**
+     * 添加用户
+     */
+    void saveUser(User user);
+
+    /**
+     * 更新用户
+     */
+    void updateUser(User user);
+
+    List<User> findByName(String s);
+
+    int findTotal();
 }

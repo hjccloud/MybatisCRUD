@@ -4,6 +4,14 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <!-- mybatis的主配置文件 -->
 <configuration>
+    <!--roesource=文件的资源路径 url=文件统一资源标识符-->
+    <properties resource="jdbc.properties"></properties>
+    <!--起别名-->
+    <typeAliases>
+        <!--<typeAliases type="edu.hut.domain.User alias=user></typeAliases>" -->
+        <package name="edu.hut.domain"></package>
+    </typeAliases>
+
     <!-- 配置环境 -->
     <environments default="mysql">
         <!-- 配置mysql的环境-->
@@ -13,16 +21,21 @@
             <!-- 配置数据源（连接池） -->
             <dataSource type="POOLED">
                 <!-- 配置连接数据库的4个基本信息 -->
-                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://localhost:3306/Mybatis?serverTimezone = UTC"/>
-                <property name="username" value="root"/>
-                <property name="password" value="root"/>
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
             </dataSource>
         </environment>
     </environments>
 
     <!-- 指定映射配置文件的位置，映射配置文件指的是每个dao独立的配置文件 -->
+    <!--xml配置-->
     <mappers>
         <mapper resource="edu/hut/dao/UserDao.xml"/>
     </mappers>
+    <!--注解配置-->
+    <!--<mappers>-->
+        <!--<mapper class="edu.hut.dao.UserDao"/>-->
+    <!--</mappers>-->
 </configuration>
